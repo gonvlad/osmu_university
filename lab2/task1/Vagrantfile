@@ -17,13 +17,13 @@ Vagrant.configure("2") do |config|
 
       uvm.vm.synced_folder "./ssh_keys", "/home/vagrant/.ssh/"
 
-      uvm.vm.provision "shell", inline: <<-SHELL
-          apt-get install -y git-all
-          git config --global user.name "Vlad Goncharov"
-          git config --global user.email gon.vlad02@gmail.com
-          git clone -b lab2 git@github.com:gonvlad/osmu_university.git
-          cat ~/osmu_university/sample.txt
-      SHELL
+      #uvm.vm.provision "shell", inline: <<-SHELL
+      #    apt-get install -y git-all
+      #    git config --global user.name "Vlad Goncharov"
+      #    git config --global user.email gon.vlad02@gmail.com
+      #    git clone -b lab2 git@github.com:gonvlad/osmu_university.git
+      #    cat ~/osmu_university/sample.txt
+      #SHELL
   end
 
   config.vm.define "CentosVM" do |cvm|
