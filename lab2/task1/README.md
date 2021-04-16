@@ -14,7 +14,7 @@
 
 ### Отчеты:
 1.  Проверка работоспособности машины UbuntuVM:
-    ![Проерка машины UbuntuVM](./report/UbuntuVM_run.PNG)
+    ![Проверка машины UbuntuVM](./report/UbuntuVM_run.PNG)
 
 2.  Проверка работоспособности машины CentosVM:
     ![Проверка машины CentosVM](./report/CentosVM_run.PNG)
