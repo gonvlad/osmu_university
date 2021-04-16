@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "UbuntuVM" do |uvm|
+      uvm.vm.box = "ubuntu/trusty64"
+
+      uvm.vm.network "private_network", ip: "192.168.56.2"
+      uvm.vm.hostname = "gonvlad.ubuntu"
+
+      uvm.vm.provider :virtualbox do |vb|
+          vb.name = "GoncharovUbuntu"
+          vb.gui = true
+          vb.cpus = 1
+          vb.memory = "512"
+      end
+
+      uvm.vm.synced_folder "./ssh_keys", "/home/vagrant/.ssh/"
+
+      uvm.vm.provision "shell", inline: <<-SHELL
+          apt-get install -y git-all
+          git config --global user.name "Vlad Goncharov"
+          git config --global user.email gon.vlad02@gmail.com
+          git clone -b lab2 git@github.com:gonvlad/osmu_university.git
+          cat ~/osmu_university/sample.txt
+      SHELL
+  end
+
+  config.vm.define "CentosVM" do |cvm|
+      cvm.vm.box = "centos/7"
+
+      cvm.vm.network "private_network", ip: "192.168.56.3"
+      cvm.vm.hostname = "gonvlad.centos"
+
+      cvm.vm.provider :virtualbox do |vb|
+          vb.name = "GoncharovCentos"
+          vb.gui = true
+          vb.cpus = 1
+          vb.memory = "512"
+      end
+
+      cvm.vm.provision "shell", inline: <<-SHELL
+          yum update
+      SHELL
+  end
+end
